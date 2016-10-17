@@ -45,6 +45,10 @@ import logging
 from base64 import b64decode
 from urlparse import parse_qs
 
+import aiml
+bot = aiml.Kernel()
+bot.learn("uvaclasses.aiml")
+
 
 ENCRYPTED_EXPECTED_TOKEN = 'AQECAHjvjnnFZ4jMdIIlvXNETShUJlQlolAPn8aPjwBMXacRuAAAAHYwdAYJKoZIhvcNAQcGoGcwZQIBADBgBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDLojuw79pc7Ni84bjwIBEIAzpUlnuRmqV1KYAlh8gG58b0EI5+ZpLgqcY6d6AG9/fKorqvUexLHrNcKkDgGgwlXsWBM8'  # Enter the base-64 encoded, encrypted Slack command token (CiphertextBlob)
 
@@ -79,3 +83,5 @@ def lambda_handler(event, context):
 
     return respond(None, "%s invoked %s in %s with the following text: %s" % (user, command, channel, command_text))
 
+sentence = "What time is it?"
+print bot.respond(sentence)
