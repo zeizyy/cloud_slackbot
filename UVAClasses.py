@@ -81,7 +81,7 @@ def lambda_handler(event, context):
     channel = params['channel_name'][0]
     command_text = params['text'][0]
 
-    return respond(None, "%s invoked %s in %s with the following text: %s" % (user, command, channel, command_text))
-
+    return respond(None, "%s : %s" % (command_text, bot.respond(command_text)))
+    
 sentence = "What time is it?"
 print bot.respond(sentence)
